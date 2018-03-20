@@ -49,11 +49,11 @@ app.get('/hit/:ninerId', (req, res) => {
           sender[2]=d_first;
           res.send(sender);
        // var myJsonString = JSON.stringify();
-        res.json({
-          cards : t_card,
-          total : userObj[req.params.ninerId],
-          dealerHand : [d_first]
-        });
+        //res.json({
+          //cards : t_card,
+          //total : userObj[req.params.ninerId],
+          //dealerHand : [d_first]
+        //});
       } else {
         let s_card = random_item(cards);
         userObj[req.params.ninerId] += s_card;
