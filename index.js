@@ -45,9 +45,9 @@ app.get('/hit/:ninerId', (req, res) => {
         userObj[req.params.ninerId] = t_card[0] + t_card[1];
 
         res.json({
-          t_card,
-          userObj[req.params.ninerId],
-          [d_first]
+          cards : t_card,
+          total : userObj[req.params.ninerId],
+          dealerHand : [d_first]
         });
       } else {
         let s_card = random_item(cards);
@@ -63,9 +63,9 @@ app.get('/hit/:ninerId', (req, res) => {
           });
         }else {
           res.json({
-             [s_card],
-            userObj[req.params.ninerId],
-            [d_first]
+            "cards" : [s_card],
+            "total" : userObj[req.params.ninerId],
+            "dealerHand" : [d_first]
           });
         }
       }
