@@ -45,9 +45,9 @@ app.get('/hit/:ninerId', (req, res) => {
         userObj[req.params.ninerId] = t_card[0] + t_card[1];
 
         res.json({
-          "cards" : t_card,
-          "total" : userObj[req.params.ninerId],
-          "dealerHand" : [d_first]
+          cards : t_card,
+          total : userObj[req.params.ninerId],
+          dealerHand : [d_first]
         });
       } else {
         let s_card = random_item(cards);
