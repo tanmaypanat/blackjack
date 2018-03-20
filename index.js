@@ -43,7 +43,8 @@ app.get('/hit/:ninerId', (req, res) => {
         d_first = d_card[0]
         dealerTotal = d_card[0] + d_card[1];
         userObj[req.params.ninerId] = t_card[0] + t_card[1];
-
+        
+          res.send("yo");
         res.json({
           cards : t_card,
           total : userObj[req.params.ninerId],
