@@ -43,17 +43,17 @@ app.get('/hit/:ninerId', (req, res) => {
         d_first = d_card[0]
         dealerTotal = d_card[0] + d_card[1];
         userObj[req.params.ninerId] = t_card[0] + t_card[1];
-        let sender=[];
-        sender[0]=t_card;
-        sender[1]=  userObj[req.params.ninerId];
-          sender[2]=d_first;
-          res.send(sender);
+        //let sender=[];
+        //sender[0]=t_card;
+        //sender[1]=  userObj[req.params.ninerId];
+          //sender[2]=d_first;
+          //res.send(sender);
        // var myJsonString = JSON.stringify();
-        //res.json({
-          //cards : t_card,
-          //total : userObj[req.params.ninerId],
-          //dealerHand : [d_first]
-        //});
+        res.json({
+          cards : t_card,
+          total : userObj[req.params.ninerId],
+          dealerHand : [d_first]
+        });
       } else {
         let s_card = random_item(cards);
         userObj[req.params.ninerId] += s_card;
@@ -67,11 +67,12 @@ app.get('/hit/:ninerId', (req, res) => {
             "total"  : temp
           });
         }else {
-          res.json({
-            "cards" : [s_card],
-            "total" : userObj[req.params.ninerId],
-            "dealerHand" : [d_first]
-          });
+            let sender=[];
+        sender[0]=s_card;
+        sender[1]=  userObj[req.params.ninerId];
+          sender[2]=d_first;
+          res.send(sender);
+         
         }
       }
     }else{
