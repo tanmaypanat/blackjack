@@ -11,11 +11,12 @@ let userObj = {}
 let dealerTotal = 0;
 let d_first;
 let cards = [1,2,3,4,5,6,7,8,9,10, 10, 10, 10];
-
+let usable;
 app.get('/getobsv/:ninerId', (req, res) => {
     res.json({
           "total" : userObj[req.params.ninerId],
           "dealerHand" : [d_first],
+          "usable" : usable
         
         });
     
@@ -44,14 +45,48 @@ app.get('/hit/:ninerId', (req, res) => {
         d_first = 0;
 
         t_card[0] = random_item(cards);
+          
         t_card[1] = random_item(cards);
+        if(t_card[0]==1)
+            {
+                if(t_card[0]+t_card[1]<21)
+                    {
+                    usable=true;
+                    userObj[req.params.ninerId] = 11+ t_card[1];
+
+                    }
+                else
+                    {
+                    usable=false;
+                    userObj[req.params.ninerId] = t_card[0] + t_card[1];
+
+                    }
+            }
+          if(t_card[1]==1)
+            {
+                if(t_card[0]+t_card[1]<21)
+                    {
+                    usable=true;
+                    userObj[req.params.ninerId] = 11+ t_card[0];
+
+                    }
+                else
+                    {
+                    usable=false;
+                    userObj[req.params.ninerId] = t_card[0] + t_card[1];
+
+                    }
+            }
+        
+
+          
 
         d_card[0] = random_item(cards);
         d_card[1] = random_item(cards);
 
         d_first = d_card[0]
         dealerTotal = d_card[0] + d_card[1];
-        userObj[req.params.ninerId] = t_card[0] + t_card[1];
+      //  userObj[req.params.ninerId] = t_card[0] + t_card[1];
 
         res.json({
           "cards" : t_card,
@@ -60,7 +95,22 @@ app.get('/hit/:ninerId', (req, res) => {
         });
       } else {
         let s_card = random_item(cards);
-        userObj[req.params.ninerId] += s_card;
+          if(s_card==1)
+            {
+                if( userObj[req.params.ninerId]+s_card[1]<21)
+                    {
+                    usable=true;
+                                userObj[req.params.ninerId] += 11;
+
+                    }
+                else
+                    {
+                    usable=false;
+                        userObj[req.params.ninerId] += s_card;
+                    }
+
+                
+            }
         console.log(userObj[req.params.ninerId]);
         if (userObj[req.params.ninerId] > 21) {
           let temp = userObj[req.params.ninerId];
