@@ -15,7 +15,7 @@ let players={}
 let sums={}
 let count=0;
 app.get('/join/:ninerId', (req, res) => {
-  if(num=0)
+  if(num==0)
       {
           num=4;
       }
