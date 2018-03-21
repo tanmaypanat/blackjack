@@ -11,7 +11,7 @@ let userObj = {}
 let dealerTotal = 0;
 let d_first;
 let cards = [1,2,3,4,5,6,7,8,9,10, 10, 10, 10];
-let usable;
+let usable=false;
 app.get('/getobsv/:ninerId', (req, res) => {
     res.json({
           "total" : userObj[req.params.ninerId],
