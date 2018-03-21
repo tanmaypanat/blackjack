@@ -103,7 +103,7 @@ app.get('/hit/:ninerId', (req, res) => {
         let s_card = random_item(cards);
           if(s_card==1)
             {
-                if( userObj[req.params.ninerId]+s_card[1]<21)
+                if( userObj[req.params.ninerId]+s_card<21)
                     {
                     usable=true;
                     userObj[req.params.ninerId] += 11;
