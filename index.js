@@ -11,7 +11,7 @@ let userObj = {}
 let dealerTotal = 0;
 let d_first;
 let cards = [1,2,3,4,5,6,7,8,9,10, 10, 10, 10];
-let usable=false;
+let usable;
 app.get('/getobsv/:ninerId', (req, res) => {
     res.json({
           "total" : userObj[req.params.ninerId],
@@ -23,6 +23,7 @@ app.get('/getobsv/:ninerId', (req, res) => {
 })
 
 app.get('/startGame/:ninerId', (req, res) => {
+    usable=false;
     if (req.params.ninerId) {
       if (!userObj[req.params.ninerId]) {
         dealerTotal = 0;
@@ -57,7 +58,7 @@ app.get('/hit/:ninerId', (req, res) => {
                     }
                 else
                     {
-                    usable=false;
+                    
                     userObj[req.params.ninerId] = t_card[0] + t_card[1];
 
                     }
@@ -72,7 +73,7 @@ app.get('/hit/:ninerId', (req, res) => {
                     }
                 else
                     {
-                    usable=false;
+                    
                     userObj[req.params.ninerId] = t_card[0] + t_card[1];
 
                     }
@@ -110,7 +111,7 @@ app.get('/hit/:ninerId', (req, res) => {
                     }
                 else
                     {
-                    usable=false;
+                    
                         userObj[req.params.ninerId] += s_card;
                     }
 
