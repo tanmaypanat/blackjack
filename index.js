@@ -106,7 +106,7 @@ app.get('/hit/:ninerId', (req, res) => {
                 if( userObj[req.params.ninerId]+s_card[1]<21)
                     {
                     usable=true;
-                                userObj[req.params.ninerId] += 11;
+                    userObj[req.params.ninerId] += 11;
 
                     }
                 else
@@ -145,6 +145,7 @@ app.get('/hit/:ninerId', (req, res) => {
 })
 
 app.get('/stand/:ninerId', (req, res) => {
+    usable=false;
   console.log(userObj[req.params.ninerId]);
     if (userObj[req.params.ninerId] != undefined) {
       let temp = userObj[req.params.ninerId];
