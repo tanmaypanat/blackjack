@@ -30,7 +30,7 @@ app.get('/join/:ninerId', (req, res) => {
             res.write("PLayer 1 : "+players[0]+"  Player 2 : "+players[1]+"  Player 3 : "+players[2]+"  Player 4 : "+players[3]);
             res.end;
         }
-   // res.write("Waiting for "+num+" more player to join");
+   res.send("Waiting for "+num+" more player to join");
     
     
 })
