@@ -62,7 +62,7 @@ app.get('/hit/:ninerId', (req, res) => {
 
                     }
             }
-          if(t_card[1]==1)
+          else if(t_card[1]==1)
             {
                 if(t_card[0]+t_card[1]<21)
                     {
@@ -77,6 +77,11 @@ app.get('/hit/:ninerId', (req, res) => {
 
                     }
             }
+          else
+              {
+                                    userObj[req.params.ninerId] = t_card[0] + t_card[1];
+  
+              }
         
 
           
@@ -111,6 +116,11 @@ app.get('/hit/:ninerId', (req, res) => {
 
                 
             }
+          else
+              {
+                                        userObj[req.params.ninerId] += s_card;
+  
+              }
         console.log(userObj[req.params.ninerId]);
         if (userObj[req.params.ninerId] > 21) {
           let temp = userObj[req.params.ninerId];
