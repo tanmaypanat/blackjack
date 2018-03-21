@@ -13,6 +13,7 @@ let d_first;
 let cards = [1,2,3,4,5,6,7,8,9,10, 10, 10, 10];
 let players={}
 let sums={}
+let num;
 let count=0;
 app.get('/join/:ninerId', (req, res) => {
   if(num==0)
@@ -23,7 +24,7 @@ app.get('/join/:ninerId', (req, res) => {
     players[count]=niner;
     sums[niner]=0;
     count++;
-    let num=4-count;
+    num=4-count;
     if(num==0)
         {
             res.send("PLayer 1 : "+players[0]+"\nPlayer 2 : "+players[1]);
