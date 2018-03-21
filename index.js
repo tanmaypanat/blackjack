@@ -11,13 +11,21 @@ let userObj = {}
 let dealerTotal = 0;
 let d_first;
 let cards = [1,2,3,4,5,6,7,8,9,10, 10, 10, 10];
+let players={}
 let sums={}
 let count=0;
 app.get('/join/:ninerId', (req, res) => {
     
+    players[count]=req.param.ninerId;
     count++;
     let num=4-count;
+    if(n==1)
+        {
+            res.send("PLayer 1 : "+players[0]+"\nPlayer 2 : "+players[1]);
+        }
     res.send("Waiting for "+num+" more player to join");
+    
+    
 })
 app.get('/startGame/:ninerId', (req, res) => {
     if (req.params.ninerId) {
