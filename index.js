@@ -11,37 +11,15 @@ let userObj = {}
 let dealerTotal = 0;
 let d_first;
 let cards = [1,2,3,4,5,6,7,8,9,10, 10, 10, 10];
-let players={}
-let sums={}
-let num;
-let count=0;
-app.get('/join/:ninerId', (req, res) => {
-  if(num==0)
-      {
-          num=4;
-      }
-  niner=req.params.ninerId;
-    players[count]=niner;
-    sums[niner]=0;
-    count++;
-    num=4-count;
-    if(num==0)
-        {
-            res.write("PLayer 1 : "+players[0]+"  Player 2 : "+players[1]+"  Player 3 : "+players[2]+"  Player 4 : "+players[3]);
-            res.end;
-        }
-   res.send("Waiting for "+num+" more player to join");
-    
-    
-})
+
 app.get('/startGame/:ninerId', (req, res) => {
     if (req.params.ninerId) {
       if (!userObj[req.params.ninerId]) {
         dealerTotal = 0;
         userObj[req.params.ninerId] = 0;
-        res.send("You can start the game now !");
+        res.send("You can start the game !");
       }else {
-        res.send("You can start the game now !");
+        res.send("You can start the game !");
       }
     }else{
       res.send("Enter Your Niner ID !");
@@ -65,16 +43,11 @@ app.get('/hit/:ninerId', (req, res) => {
         d_first = d_card[0]
         dealerTotal = d_card[0] + d_card[1];
         userObj[req.params.ninerId] = t_card[0] + t_card[1];
-        //let sender=[];
-        //sender[0]=t_card;
-        //sender[1]=  userObj[req.params.ninerId];
-          //sender[2]=d_first;
-          //res.send(sender);
-       // var myJsonString = JSON.stringify();
+
         res.json({
-          cards : t_card,
-          total : userObj[req.params.ninerId],
-          dealerHand : [d_first]
+          "cards" : t_card,
+          "total" : userObj[req.params.ninerId],
+          "dealerHand" : [d_first]
         });
       } else {
         let s_card = random_item(cards);
@@ -89,12 +62,11 @@ app.get('/hit/:ninerId', (req, res) => {
             "total"  : temp
           });
         }else {
-            let sender=[];
-        sender[0]=s_card;
-        sender[1]=  userObj[req.params.ninerId];
-          sender[2]=d_first;
-          res.send(sender);
-         
+          res.json({
+            "cards" : [s_card],
+            "total" : userObj[req.params.ninerId],
+            "dealerHand" : [d_first]
+          });
         }
       }
     }else{
@@ -138,7 +110,7 @@ app.get('/stand/:ninerId', (req, res) => {
           }else{
             res.json({
               "total" : temp,
-              "result"  : "Dealer and you both Won draw !",
+              "result"  : "Dealer you Won draw !",
               "Win" : false
             })
           }
