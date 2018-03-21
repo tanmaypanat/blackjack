@@ -27,9 +27,10 @@ app.get('/join/:ninerId', (req, res) => {
     num=4-count;
     if(num==0)
         {
-            res.send("PLayer 1 : "+players[0]+"  Player 2 : "+players[1]+"  Player 3 : "+players[2]+"  Player 4 : "+players[3]);
+            res.write("PLayer 1 : "+players[0]+"  Player 2 : "+players[1]+"  Player 3 : "+players[2]+"  Player 4 : "+players[3]);
+            res.end;
         }
-    res.send("Waiting for "+num+" more player to join");
+    res.write("Waiting for "+num+" more player to join");
     
     
 })
