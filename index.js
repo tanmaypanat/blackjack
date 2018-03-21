@@ -15,7 +15,7 @@ let usable=false;
 app.get('/getobsv/:ninerId', (req, res) => {
     res.json({
           "total" : userObj[req.params.ninerId],
-          "dealerHand" : [d_first],
+          "dealerHand" : d_first,
           "usable" : usable
         
         });
@@ -96,7 +96,7 @@ app.get('/hit/:ninerId', (req, res) => {
         res.json({
           "cards" : t_card,
           "total" : userObj[req.params.ninerId],
-          "dealerHand" : [d_first]
+          "dealerHand" : d_first
         });
       } else {
         let s_card = random_item(cards);
@@ -134,7 +134,7 @@ app.get('/hit/:ninerId', (req, res) => {
           res.json({
             "cards" : [s_card],
             "total" : userObj[req.params.ninerId],
-            "dealerHand" : [d_first]
+            "dealerHand" : d_first
           });
         }
       }
