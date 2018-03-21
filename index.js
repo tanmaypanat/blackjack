@@ -161,6 +161,7 @@ app.get('/stand/:ninerId', (req, res) => {
         res.json({
           "total" : temp,
           "result"  : "Dealer Busted, you Won !",
+            "dealerTotal" :dealerTotal,
           "Win" : true
         })
       }else{
@@ -168,18 +169,21 @@ app.get('/stand/:ninerId', (req, res) => {
             res.json({
               "total" : temp,
               "result"  : "Dealer Won, you Lost !",
+                "dealerTotal" :dealerTotal,
               "Win" : false
             })
           }else if (dealerTotal < temp) {
             res.json({
               "total" : temp,
               "result"  : "Dealer Lost, you Won !",
+                "dealerTotal" :dealerTotal,
               "Win" : true
             })
           }else{
             res.json({
               "total" : temp,
               "result"  : "Dealer you Won draw !",
+                "dealerTotal" :dealerTotal,
               "Win" : false
             })
           }
