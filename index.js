@@ -11,7 +11,13 @@ let userObj = {}
 let dealerTotal = 0;
 let d_first;
 let cards = [1,2,3,4,5,6,7,8,9,10, 10, 10, 10];
-
+let sums={}
+let count=0;
+app.get('/join/:ninerId', (req, res) => {
+    
+    count++;
+    res.send("Waiting for"+4-count+"to join");
+})
 app.get('/startGame/:ninerId', (req, res) => {
     if (req.params.ninerId) {
       if (!userObj[req.params.ninerId]) {
@@ -116,7 +122,7 @@ app.get('/stand/:ninerId', (req, res) => {
           }else{
             res.json({
               "total" : temp,
-              "result"  : "Dealer you Won draw !",
+              "result"  : "Dealer and you both Won draw !",
               "Win" : false
             })
           }
