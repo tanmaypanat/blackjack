@@ -43,11 +43,8 @@ app.get('/check/:ninerId', (req, res) => {
 })
 
 app.get('/getplayers/:ninerId', (req, res) => {
-    for(int i=1;i<=4;i++)
-        {
-            info+="Player id : "+players[i].id;
-        }
-    res.send(info);
+    
+    res.send(""+players[1].id);
 })
 app.get('/startGame/:ninerId', (req, res) => {
     usable=false;
