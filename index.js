@@ -13,7 +13,10 @@ app.use(function(req, res, next) {
 //        int sum;
 //        boolean useable;
 //    }
-
+class Users
+    {
+        
+    }
 let count =0;
 let userObj = {}
 let dealerTotal = 0;
