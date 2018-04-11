@@ -7,12 +7,12 @@ app.use(function(req, res, next) {
   next();
 });
 
-class players
-    {
-        int ninerid;
-        int sum;
-        boolean useable;
-    }
+//class players
+//    {
+//        int ninerid;
+//        int sum;
+//        boolean useable;
+//    }
 
 let count =0;
 let userObj = {}
