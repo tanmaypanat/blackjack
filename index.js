@@ -45,7 +45,7 @@ app.get('/check/:ninerId', (req, res) => {
 app.get('/getplayers/:ninerId', (req, res) => {
     
      res.json({
-          "cards" : players[1].id
+          "cards" : players[2].id
           
           
         });
