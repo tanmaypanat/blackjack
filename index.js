@@ -26,7 +26,8 @@ let dealerTotal = 0;
 let d_first;
 let cards = [1,2,3,4,5,6,7,8,9,10, 10, 10, 10];
 let usable=false;
-let players=[];
+var players=[];
+var info="";
 app.get('/getobsv/:ninerId', (req, res) => {
     res.json({
           "total" : userObj[req.params.ninerId],
@@ -41,6 +42,13 @@ app.get('/check/:ninerId', (req, res) => {
     
 })
 
+app.get('/getplayers/:ninerId', (req, res) => {
+    for(int i=1;i<=4;i++)
+        {
+            info+="Player id : "+players[i].id;
+        }
+    res.send(info);
+})
 app.get('/startGame/:ninerId', (req, res) => {
     usable=false;
     count=count+1;
