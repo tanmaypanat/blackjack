@@ -44,10 +44,10 @@ app.get('/startGame/:ninerId', (req, res) => {
 //    }else{
 //      res.send("Enter Your Niner ID !");
 //    }
-    var def=new players();
-    def.ninerid=10;
-    def.sum=0;
-    def.useable=false;
+   // var def=new players();
+    //def.ninerid=10;
+    //def.sum=0;
+    //def.useable=false;
     res.send(""+count);
     
 })
