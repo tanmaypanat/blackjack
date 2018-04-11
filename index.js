@@ -13,7 +13,7 @@ class players
         int sum;
         boolean useable;
     }
-players def=new players();
+
 let count =0;
 let userObj = {}
 let dealerTotal = 0;
@@ -44,6 +44,7 @@ app.get('/startGame/:ninerId', (req, res) => {
 //    }else{
 //      res.send("Enter Your Niner ID !");
 //    }
+    players def=new players();
     def.ninerid=10;
     def.sum=0;
     def.useable=false;
