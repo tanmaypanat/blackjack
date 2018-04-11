@@ -13,7 +13,7 @@ app.use(function(req, res, next) {
 //        int sum;
 //        boolean useable;
 //    }
-class Users(niner)
+function Users(niner)
     {
         //this.cc=0;
         this.id=niner;
@@ -52,7 +52,7 @@ app.get('/startGame/:ninerId', (req, res) => {
     //def.ninerid=10;
     //def.sum=0;
     //def.useable=false;
-    var tt=new Users(req.params.ninerId);
+    //var tt=new Users(req.params.ninerId);
     res.send(""+count);
     
 })
