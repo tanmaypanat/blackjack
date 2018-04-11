@@ -15,7 +15,7 @@ app.use(function(req, res, next) {
 //    }
 class Users
     {
-        
+        let cc=0;
     }
 let count =0;
 let userObj = {}
