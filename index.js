@@ -84,21 +84,21 @@ app.get('/startGame/:ninerId', (req, res) => {
         {
     var tt2=new Users(req.params.ninerId,0,false);
     players.push(tt2);
-                        res.send("You are player : "+req.params.ninerId);
+                        res.send("You are player : "+tt2.id);
 
         }
      if(count==3)
         {
     var tt3=new Users(req.params.ninerId,0,false);
     players.push(tt3);
-                        res.send("You are player : "+req.params.ninerId);
+                        res.send("You are player : "+tt3.id);
 
         }
      if(count==4)
         {
     var tt4=new Users(req.params.ninerId,0,false);
     players.push(tt4);
-                        res.send("You are player : "+req.params.ninerId);
+                        res.send("You are player : "+tt4.id);
 
         }
     
