@@ -39,6 +39,7 @@ app.get('/check/:ninerId', (req, res) => {
     res.send(""+count);
     
 })
+var tmp = [new Users(0,0,false),new Users(0,0,false),new Users(0,0,false),new Users(0,0,false))];
 app.get('/startGame/:ninerId', (req, res) => {
     usable=false;
     count=count+1;
@@ -57,7 +58,7 @@ app.get('/startGame/:ninerId', (req, res) => {
     //def.ninerid=10;
     //def.sum=0;
     //def.useable=false;
-    var tt=new Users(req.params.ninerId,0,false);
+    //var tt=new Users(req.params.ninerId,0,false);
     res.send("You are player : "+count);
     
 })
