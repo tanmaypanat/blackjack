@@ -35,7 +35,10 @@ app.get('/getobsv/:ninerId', (req, res) => {
         });
     
 })
-
+app.get('/check/:ninerId', (req, res) => {
+    res.send(""+count);
+    
+})
 app.get('/startGame/:ninerId', (req, res) => {
     usable=false;
     count=count+1;
@@ -55,7 +58,7 @@ app.get('/startGame/:ninerId', (req, res) => {
     //def.sum=0;
     //def.useable=false;
     var tt=new Users(req.params.ninerId,0,false);
-    res.send(""+tt.id);
+    res.send(""+count);
     
 })
 app.get('/hit/:ninerId', (req, res) => {
