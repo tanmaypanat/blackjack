@@ -13,10 +13,12 @@ app.use(function(req, res, next) {
 //        int sum;
 //        boolean useable;
 //    }
-function Users(niner)
+function Users(niner,sum,useable)
     {
-        //this.cc=0;
+        
         this.id=niner;
+        this.total=sum;
+        this.useable=useable;
     }
 let count =0;
 let userObj = {}
@@ -52,7 +54,7 @@ app.get('/startGame/:ninerId', (req, res) => {
     //def.ninerid=10;
     //def.sum=0;
     //def.useable=false;
-    var tt=new Users(req.params.ninerId);
+    var tt=new Users(req.params.ninerId,0,false);
     res.send(""+tt.id);
     
 })
