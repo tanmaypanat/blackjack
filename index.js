@@ -6,7 +6,7 @@ app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next();
 });
-
+let count =0;
 let userObj = {}
 let dealerTotal = 0;
 let d_first;
@@ -24,17 +24,19 @@ app.get('/getobsv/:ninerId', (req, res) => {
 
 app.get('/startGame/:ninerId', (req, res) => {
     usable=false;
-    if (req.params.ninerId) {
-      if (!userObj[req.params.ninerId]) {
-        dealerTotal = 0;
-        userObj[req.params.ninerId] = 0;
-        res.send("You can start the game !");
-      }else {
-        res.send("You can start the game !");
-      }
-    }else{
-      res.send("Enter Your Niner ID !");
-    }
+    count=count+1;
+//    if (req.params.ninerId) {
+//      if (!userObj[req.params.ninerId]) {
+//        dealerTotal = 0;
+//        userObj[req.params.ninerId] = 0;
+//        res.send("You can start the game !");
+//      }else {
+//        res.send("You can start the game !");
+//      }
+//    }else{
+//      res.send("Enter Your Niner ID !");
+//    }
+    res.send(count);
 })
 app.get('/hit/:ninerId', (req, res) => {
   console.log(userObj[req.params.ninerId]);
