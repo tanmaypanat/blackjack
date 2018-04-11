@@ -26,6 +26,7 @@ let dealerTotal = 0;
 let d_first;
 let cards = [1,2,3,4,5,6,7,8,9,10, 10, 10, 10];
 let usable=false;
+let players=[];
 app.get('/getobsv/:ninerId', (req, res) => {
     res.json({
           "total" : userObj[req.params.ninerId],
@@ -62,7 +63,8 @@ app.get('/startGame/:ninerId', (req, res) => {
     //def.ninerid=10;
     //def.sum=0;
     //def.useable=false;
-    //var tt=new Users(req.params.ninerId,0,false);
+    var tt=new Users(req.params.ninerId,0,false);
+    players.push(tt);
     res.send("You are player : "+count);
     
 })
