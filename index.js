@@ -53,7 +53,7 @@ app.get('/startGame/:ninerId', (req, res) => {
     //def.sum=0;
     //def.useable=false;
     var tt=new Users(10);
-    res.send(""+count);
+    res.send(""+tt.id);
     
 })
 app.get('/hit/:ninerId', (req, res) => {
