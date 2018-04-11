@@ -44,7 +44,12 @@ app.get('/check/:ninerId', (req, res) => {
 
 app.get('/getplayers/:ninerId', (req, res) => {
     
-    res.send(""+players[2].id+""+players[1].id);
+     res.json({
+          "cards" : players[1].id,
+          "total" : players[2].id
+          
+        });
+    //res.send(""+players[2].id+""+players[1].id);
    // res.send("Player 1 : "+players[1].id+"Player 2 : "+players[2].id+"Player 3 : "+players[3].id+"Player 4 : "+players[4].id);
 })
 app.get('/startGame/:ninerId', (req, res) => {
