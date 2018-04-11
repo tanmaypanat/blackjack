@@ -39,10 +39,14 @@ app.get('/check/:ninerId', (req, res) => {
     res.send(""+count);
     
 })
-var tmp = [new Users(0,0,false),new Users(0,0,false),new Users(0,0,false),new Users(0,0,false))];
+
 app.get('/startGame/:ninerId', (req, res) => {
     usable=false;
     count=count+1;
+    if(count==1)
+        {
+            var tmp = [new Users(0,0,false),new Users(0,0,false),new Users(0,0,false),new Users(0,0,false))];
+        }
 //    if (req.params.ninerId) {
 //      if (!userObj[req.params.ninerId]) {
 //        dealerTotal = 0;
