@@ -36,7 +36,7 @@ app.get('/startGame/:ninerId', (req, res) => {
 //    }else{
 //      res.send("Enter Your Niner ID !");
 //    }
-    res.send("the count");
+    res.send("the count"+count);
 })
 app.get('/hit/:ninerId', (req, res) => {
   console.log(userObj[req.params.ninerId]);
