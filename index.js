@@ -6,6 +6,14 @@ app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next();
 });
+
+class players
+    {
+        int ninerid;
+        int sum;
+        boolean useable;
+    }
+players def=new players();
 let count =0;
 let userObj = {}
 let dealerTotal = 0;
@@ -36,7 +44,9 @@ app.get('/startGame/:ninerId', (req, res) => {
 //    }else{
 //      res.send("Enter Your Niner ID !");
 //    }
-    
+    def.ninerid=10;
+    def.sum=0;
+    def.useable=false;
     res.send(""+count);
     
 })
