@@ -52,7 +52,7 @@ app.get('/startGame/:ninerId', (req, res) => {
     //def.ninerid=10;
     //def.sum=0;
     //def.useable=false;
-    var tt=new Users(10);
+    var tt=new Users(req.params.ninerId);
     res.send(""+tt.id);
     
 })
