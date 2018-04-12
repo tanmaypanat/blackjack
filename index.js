@@ -160,10 +160,9 @@ app.get('/startGame/:ninerId', (req, res) => {
 
 app.get('/hit/:ninerId', (req, res) => {
     
-    if(turn[currentturn]==req.params.ninerId)
-        {
+    
             
-        obsv=obsv+1;
+    obsv=obsv+1;
     if(obsv==4)
         {
             
@@ -259,17 +258,9 @@ app.get('/hit/:ninerId', (req, res) => {
                     }
 
             }
-    currentturn=currentturn+1;
-            if(currentturn==4)
-                {
-                    currentturn=0;
-                }
+    
     res.send(""+players[index].total);
-        }
-    else
-        {   
-            res.send(""+99);
-        }
+      
 })
 
 app.get('/stand/:ninerId', (req, res) => {
