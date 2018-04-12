@@ -274,6 +274,7 @@ app.get('/stand/:ninerId', (req, res) => {
        
           let rand_card = random_item(cards);
          dealerTotal += rand_card;
+          res.send(""+dealerTotal);
         
       }}
     else{
