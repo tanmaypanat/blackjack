@@ -123,6 +123,15 @@ app.get('/hit/:ninerId', (req, res) => {
     
     
         hitcount=hitcount+1;
+    if(hitcount==4)
+        {
+            hitcount=0;
+            dealerTotal=dealerTotal+1;
+            if(dealerTotal==1)
+                {
+                    
+                }
+        }
         var index=99;
         for(var i=0;i<4;i++)
                 {
