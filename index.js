@@ -35,10 +35,13 @@ let cards = [1,2,3,4,5,6,7,8,9,10, 10, 10, 10];
 let usable=false;
 var players=[];
 var info="";
+var observer=0;
 let hitcount=0;
 var idsum=0;
 app.get('/getobsv/:ninerId', (req, res) => {
-    obvs=0;
+    observer=observer+1;
+    if(observer==4)
+        obsv=0;
     let ptot=[];
     let pus=[];
     var k=-1;
@@ -78,6 +81,19 @@ res.send(""+obsv);
 
 app.get('/checkstand/:ninerId', (req, res) => {
     res.send(""+sumi);
+    
+})
+
+app.get('/checkobsv/:ninerId', (req, res) => {
+    if(observer==4)
+        {
+            observer=0;
+            res.send(""+1);
+        }
+    else
+        {
+            res.send(""+0);
+        }
     
 })
 
