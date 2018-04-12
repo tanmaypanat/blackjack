@@ -147,7 +147,7 @@ app.get('/hit/:ninerId', (req, res) => {
             if(dealerhit==1)
                 {
                     
-                    
+                    let d_card = [];
                     d_card[0] = random_item(cards);
                     d_card[1] = random_item(cards);
 
