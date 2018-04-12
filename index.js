@@ -30,10 +30,11 @@ var players=[];
 var info="";
 let hitcount=0;
 app.get('/getobsv/:ninerId', (req, res) => {
+    hitcount=0;
     res.json({
-          "total" : userObj[req.params.ninerId],
+          "total" : players[0].total,
           "dealerHand" : d_first,
-          "usable" : usable
+          "usable" : players[0].useable
         
         });
     
@@ -125,7 +126,7 @@ app.get('/hit/:ninerId', (req, res) => {
         hitcount=hitcount+1;
     if(hitcount==4)
         {
-            hitcount=0;
+            
             dealerTotal=dealerTotal+1;
             if(dealerTotal==1)
                 {
