@@ -19,6 +19,7 @@ function Users(niner,sum,useable)
         this.id=niner;
         this.total=sum;
         this.useable=useable;
+        this.standd=1;
     }
 let count =0;
    let ids=[];
@@ -263,7 +264,7 @@ app.get('/stand/:ninerId', (req, res) => {
     //if everyone has stood then do dealer hands
     for(var i=0;i<4;i++)
         {
-            if(ids[i]==req.params.ninerId)
+            if(ids[i]-req.params.ninerId==0)
                 {
                     ids[i]=0;
                 }
