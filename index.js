@@ -28,6 +28,7 @@ let cards = [1,2,3,4,5,6,7,8,9,10, 10, 10, 10];
 let usable=false;
 var players=[];
 var info="";
+let hitcount=0;
 app.get('/getobsv/:ninerId', (req, res) => {
     res.json({
           "total" : userObj[req.params.ninerId],
@@ -110,13 +111,19 @@ app.get('/startGame/:ninerId', (req, res) => {
     
 })
 app.get('/hit/:ninerId', (req, res) => {
-  console.log(userObj[req.params.ninerId]);
-    if (userObj[req.params.ninerId] != undefined) {
-      if (userObj[req.params.ninerId] == 0) {
+        hitcount=hitcount+1;
+        
+        var index=99;
+        for(int i=0;i<4;i++)
+            {
+                if(players[i].id==req.params.ninerId)
+                    index=i;
+            }
         let t_card = [];
-        let d_card = [];
+        
 
-        d_first = 0;
+        if(players[index].total==0)
+           {
 
         t_card[0] = random_item(cards);
           
@@ -125,14 +132,14 @@ app.get('/hit/:ninerId', (req, res) => {
             {
                 if(t_card[0]+t_card[1]<21)
                     {
-                    usable=true;
-                    userObj[req.params.ninerId] = 11+ t_card[1];
+                    players[index].useable=true;
+                    players[index].total = 11+ t_card[1];
 
                     }
                 else
                     {
                     
-                    userObj[req.params.ninerId] = t_card[0] + t_card[1];
+                    players[index].total = t_card[0] + t_card[1];
 
                     }
             }
@@ -140,81 +147,82 @@ app.get('/hit/:ninerId', (req, res) => {
             {
                 if(t_card[0]+t_card[1]<21)
                     {
-                    usable=true;
-                    userObj[req.params.ninerId] = 11+ t_card[0];
+                    players[index].useable=true;
+                    players[index].total = 11+ t_card[0];
 
                     }
                 else
                     {
                     
-                    userObj[req.params.ninerId] = t_card[0] + t_card[1];
+                    players[index].total = t_card[0] + t_card[1];
 
                     }
             }
           else
               {
-                                    userObj[req.params.ninerId] = t_card[0] + t_card[1];
+                                    players[index].total = t_card[0] + t_card[1];
   
               }
         
 
           
 
-        d_card[0] = random_item(cards);
-        d_card[1] = random_item(cards);
-
-        d_first = d_card[0]
-        dealerTotal = d_card[0] + d_card[1];
+//        d_card[0] = random_item(cards);
+//        d_card[1] = random_item(cards);
+//
+//        d_first = d_card[0]
+//        dealerTotal = d_card[0] + d_card[1];
       //  userObj[req.params.ninerId] = t_card[0] + t_card[1];
 
-        res.json({
-          "cards" : t_card,
-          "total" : userObj[req.params.ninerId],
-          "dealerHand" : d_first
-        });
+//        res.json({
+//          "Player total " : players[index].total,
+//          "total" : userObj[req.params.ninerId],
+//          "useable" : 
+//        });
       } else {
         let s_card = random_item(cards);
           if(s_card==1)
             {
-                if( userObj[req.params.ninerId]+s_card<21)
+                if(  players[index].total+s_card<21)
                     {
-                    usable=true;
-                    userObj[req.params.ninerId] += 11;
+                     players[index].useable=true;
+                     players[index].total+= 11;
 
                     }
                 else
                     {
                     
-                        userObj[req.params.ninerId] += s_card;
+                        players[index].total += s_card;
                     }
 
                 
             }
           else
               {
-                                        userObj[req.params.ninerId] += s_card;
+                                         players[index].total += s_card;
   
               }
-        console.log(userObj[req.params.ninerId]);
-        if (userObj[req.params.ninerId] > 21) {
-          let temp = userObj[req.params.ninerId];
-          userObj[req.params.ninerId] = 0;
-          d_first = 0;
-          res.json({
-            "cards" : "Busted",
-            "total"  : temp
-          });
-        }else {
-          res.json({
-            "cards" : [s_card],
-            "total" : userObj[req.params.ninerId],
-            "dealerHand" : d_first
-          });
-        }
+//        console.log(userObj[req.params.ninerId]);
+//        if (userObj[req.params.ninerId] > 21) {
+//          let temp = userObj[req.params.ninerId];
+//          userObj[req.params.ninerId] = 0;
+//          d_first = 0;
+//          res.json({
+//            "cards" : "Busted",
+//            "total"  : temp
+//          });
+//        }else {
+//          res.json({
+//            "cards" : [s_card],
+//            "total" : userObj[req.params.ninerId],
+//            "dealerHand" : d_first
+//          });
+//        }
       }
     }else{
       res.send("Please start the game and then Hit !");
     }
+    res.send(""+players[index].total)
 })
 
 app.get('/stand/:ninerId', (req, res) => {
