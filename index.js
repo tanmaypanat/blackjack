@@ -31,10 +31,28 @@ var info="";
 let hitcount=0;
 app.get('/getobsv/:ninerId', (req, res) => {
     hitcount=0;
+    let ptot=[];
+    let pus=[];
+    var k=-1;
+    for(var i=0;i<4;i++)
+        {
+            if(players[i].id!=req.params.ninerId)
+                {
+                    k=k+1;
+                    ptot[k]=players[i].total;
+                    pus[k]=players[i].useable;
+                }
+        }
     res.json({
           "total" : players[0].total,
           "dealerHand" : d_first,
-          "usable" : players[0].useable
+          "usable" : players[0].useable,
+          "opponent1 total" :ptot[0],
+        "opponent1 useable" :pus[0],
+        "opponent2 total" :ptot[1],
+        "opponent2 useable" :pus[1],
+        "opponent3 total" :ptot[2],
+        "opponent3 useable" :pus[2]
         
         });
     
