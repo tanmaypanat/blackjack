@@ -44,6 +44,10 @@ app.get('/check/:ninerId', (req, res) => {
     
 })
 
+app.get('/checkhits/:ninerId', (req, res) => {
+    res.send(""+hitcount);
+    
+})
 
 
 app.get('/getplayers/:ninerId', (req, res) => {
