@@ -70,16 +70,9 @@ app.get('/check/:ninerId', (req, res) => {
 })
 
 app.get('/checkhits/:ninerId', (req, res) => {
-    if(hitcount==needshits)
-        {
-    res.send(""+4);
-        }
-    else
-        {
-                res.send(""+99);
-
-        }
     
+res.send(""+hitcount);
+   
 })
 
 app.get('/checkstand/:ninerId', (req, res) => {
@@ -98,37 +91,15 @@ app.get('/getplayers/:ninerId', (req, res) => {
           "Player 1 " : players[0].id,
          "Player 2 " : players[1].id,
          "Player 3 " : players[2].id,
-        "Player 4 " : players[3].id,
-
-
-          
-          
+        "Player 4 " : players[3].id  
         });
-    //res.send(""+players[2].id+""+players[1].id);
-   // res.send("Player 1 : "+players[1].id+"Player 2 : "+players[2].id+"Player 3 : "+players[3].id+"Player 4 : "+players[4].id);
+
 })
 app.get('/startGame/:ninerId', (req, res) => {
     usable=false;
     count=count+1;
-    if(count==1)
-        {
-          //  var tmp = [new Users(0,0,false),new Users(0,0,false),new Users(0,0,false),new Users(0,0,false))];
-        }
-//    if (req.params.ninerId) {
-//      if (!userObj[req.params.ninerId]) {
-//        dealerTotal = 0;
-//        userObj[req.params.ninerId] = 0;
-//        res.send("You can start the game !");
-//      }else {
-//        res.send("You can start the game !");
-//      }
-//    }else{
-//      res.send("Enter Your Niner ID !");
-//    }
-   // var def=new players();
-    //def.ninerid=10;
-    //def.sum=0;
-    //def.useable=false;
+   
+
     if(count==1)
         {
     var tt=new Users(req.params.ninerId,0,false);
@@ -279,7 +250,7 @@ app.get('/hit/:ninerId', (req, res) => {
     res.send(""+players[index].total);
         }
     else
-        {
+        {   
             res.send(""+99);
         }
 })
@@ -288,12 +259,16 @@ app.get('/stand/:ninerId', (req, res) => {
     
     //hitcount=hitcount+1;
     //if everyone has stood then do dealer hands
+    if(turn[currentturn]==req.params.ninerId)
+        {
+            
+        hitcount=hitcount+1;
     for(var i=0;i<4;i++)
         {
             if(players[i].id==req.params.ninerId)
                 {
                 players[i].standd=0;
-                    needshits=needshits-1;
+                    
                 }
         }
     sumi=0;
@@ -317,7 +292,7 @@ app.get('/stand/:ninerId', (req, res) => {
     else{
         res.send(""+sumi);
     }
-
+        }
       })
 
 function random_item(items)
