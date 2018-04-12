@@ -23,6 +23,8 @@ function Users(niner,sum,useable)
     }
 let count =0;
    let ids=[];
+let turn=[];
+var currentturn=0;
 let userObj = {}
 var needshits=4;
 var sumi=0;
@@ -151,6 +153,10 @@ app.get('/startGame/:ninerId', (req, res) => {
         {
     var tt4=new Users(req.params.ninerId,0,false);
     players.push(tt4);
+            for(var i=0;i<4;i++)
+        {
+            turn[i]=players[i].id;
+        }
                         res.send("You are player : "+tt4.id);
 
         }
@@ -166,7 +172,9 @@ app.get('/startGame/:ninerId', (req, res) => {
 
 app.get('/hit/:ninerId', (req, res) => {
     
-    
+    if(turn[currentturn]==req.params.ninerId)
+        {
+            
         hitcount=hitcount+1;
     if(hitcount==4)
         {
@@ -263,8 +271,17 @@ app.get('/hit/:ninerId', (req, res) => {
                     }
 
             }
-    
+    currentturn=currentturn+1;
+            if(currentturn==4)
+                {
+                    currentturn=0;
+                }
     res.send(""+players[index].total);
+        }
+    else
+        {
+            res.send(""+99);
+        }
 })
 
 app.get('/stand/:ninerId', (req, res) => {
