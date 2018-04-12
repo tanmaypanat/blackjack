@@ -22,6 +22,8 @@ function Users(niner,sum,useable)
     }
 let count =0;
 let userObj = {}
+let d_first = 0;
+var dealerhit=0;
 let dealerTotal = 0;
 let d_first;
 let cards = [1,2,3,4,5,6,7,8,9,10, 10, 10, 10];
@@ -29,11 +31,26 @@ let usable=false;
 var players=[];
 var info="";
 let hitcount=0;
+
+app.get('/checkhit/:ninerId', (req, res) => {
+    res.send(""+hitcount);
+    
+})
 app.get('/getobsv/:ninerId', (req, res) => {
+    
+    var index=99;
+        for(var i=0;i<4;i++)
+                {
+                    if(players[i].id==req.params.ninerId)
+                        {
+                        index=i;
+                        }
+                }
+    
     res.json({
-          "total" : userObj[req.params.ninerId],
+          "playertotal" : players[index].total,
           "dealerHand" : d_first,
-          "usable" : usable
+          "usable" : players[index].useable,
         
         });
     
@@ -113,18 +130,7 @@ app.get('/startGame/:ninerId', (req, res) => {
     
 })
 
-app.get('/firsthit/:ninerId', (req, res) => {
-    hitcount=hitcount+1;
-    var index=99;
-        for(var i=0;i<4;i++)
-                {
-                    if(players[i].id==req.params.ninerId)
-                        {
-                        index=i;
-                        }
-                }
-    
-})
+
 
 
 
@@ -134,6 +140,21 @@ app.get('/hit/:ninerId', (req, res) => {
     
     
         hitcount=hitcount+1;
+    if(hitcount==4)
+        {
+            hitcount=0;
+            dealerhit=dealerhit+1;
+            if(dealerhit==1)
+                {
+                    
+                    
+                    d_card[0] = random_item(cards);
+                    d_card[1] = random_item(cards);
+
+                    d_first = d_card[0]
+                    dealerTotal = d_card[0] + d_card[1];
+                }
+        }
         var index=99;
         for(var i=0;i<4;i++)
                 {
