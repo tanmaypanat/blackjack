@@ -130,94 +130,94 @@ app.get('/firsthit/:ninerId', (req, res) => {
 
 
 
-//app.get('/hit/:ninerId', (req, res) => {
-//    
-//    
-//        hitcount=hitcount+1;
-//        var index=99;
-//        for(int i=0;i<4;i++)
-//                {
-//                    if(players[i].id==req.params.ninerId)
-//                        {
-//                        index=i;
-//                        }
-//                }
-//        let t_card = [];
-//        
-//
-//        if(players[index].total==0)
-//           {
-//
-//        t_card[0] = random_item(cards);
-//          
-//        t_card[1] = random_item(cards);
-//        if(t_card[0]==1)
-//                    {
-//                if(t_card[0]+t_card[1]<21)
-//                            {
-//                    players[index].useable=true;
-//                    players[index].total = 11+ t_card[1];
-//
-//                            }
-//                else
-//                            {
-//                    
-//                    players[index].total = t_card[0] + t_card[1];
-//
-//                            }
-//                    }
-//          else if(t_card[1]==1)
-//                {
-//                if(t_card[0]+t_card[1]<21)
-//                        {
-//                    players[index].useable=true;
-//                    players[index].total = 11+ t_card[0];
-//
-//                        }
-//                else
-//                        {
-//                    
-//                    players[index].total = t_card[0] + t_card[1];
-//
-//                        }
-//                }
-//          else
-//                    {
-//                                    players[index].total = t_card[0] + t_card[1];
-//  
-//                    }
-//        
-//            } 
-//    
-//    else 
-//            {
-//        let s_card = random_item(cards);
-//          if(s_card==1)
-//                {
-//                if(  players[index].total+s_card<21)
-//                        {
-//                     players[index].useable=true;
-//                     players[index].total+= 11;
-//
-//                        }
-//                else
-//                        {
-//                    
-//                        players[index].total += s_card;
-//                        }
-//
-//                
-//                }
-//          else
-//                    {
-//                                         players[index].total += s_card;
-//  
-//                    }
-//
-//            }
-//    
-//    res.send(""+players[index].total);
-//})
+app.get('/hit/:ninerId', (req, res) => {
+    
+    
+        hitcount=hitcount+1;
+        var index=99;
+        for(var i=0;i<4;i++)
+                {
+                    if(players[i].id==req.params.ninerId)
+                        {
+                        index=i;
+                        }
+                }
+        let t_card = [];
+        
+
+        if(players[index].total==0)
+           {
+
+        t_card[0] = random_item(cards);
+          
+        t_card[1] = random_item(cards);
+        if(t_card[0]==1)
+                    {
+                if(t_card[0]+t_card[1]<21)
+                            {
+                    players[index].useable=true;
+                    players[index].total = 11+ t_card[1];
+
+                            }
+                else
+                            {
+                    
+                    players[index].total = t_card[0] + t_card[1];
+
+                            }
+                    }
+          else if(t_card[1]==1)
+                {
+                if(t_card[0]+t_card[1]<21)
+                        {
+                    players[index].useable=true;
+                    players[index].total = 11+ t_card[0];
+
+                        }
+                else
+                        {
+                    
+                    players[index].total = t_card[0] + t_card[1];
+
+                        }
+                }
+          else
+                    {
+                                    players[index].total = t_card[0] + t_card[1];
+  
+                    }
+        
+            } 
+    
+    else 
+            {
+        let s_card = random_item(cards);
+          if(s_card==1)
+                {
+                if(  players[index].total+s_card<21)
+                        {
+                     players[index].useable=true;
+                     players[index].total+= 11;
+
+                        }
+                else
+                        {
+                    
+                        players[index].total += s_card;
+                        }
+
+                
+                }
+          else
+                    {
+                                         players[index].total += s_card;
+  
+                    }
+
+            }
+    
+    res.send(""+players[index].total);
+})
 
 app.get('/stand/:ninerId', (req, res) => {
     usable=false;
