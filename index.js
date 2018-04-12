@@ -54,10 +54,18 @@ app.get('/getobsv/:ninerId', (req, res) => {
                     pus[k]=players[i].useable;
                 }
         }
+    var index;
+    for(var i=0;i<4;i++)
+                {
+                    if(players[i].id==req.params.ninerId)
+                        {
+                        index=i;
+                        }
+                }
     res.json({
-          "total" : players[0].total,
+          "total" : players[index].total,
           "dealerHand" : d_first,
-          "usable" : players[0].useable,
+          "usable" : players[index].useable,
           "opponent1 total" :ptot[0],
         "opponent1 useable" :pus[0],
         "opponent2 total" :ptot[1],
