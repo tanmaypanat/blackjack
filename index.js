@@ -140,21 +140,21 @@ app.get('/hit/:ninerId', (req, res) => {
     
     
         hitcount=hitcount+1;
-    if(hitcount==4)
-        {
-            hitcount=0;
-            dealerhit=dealerhit+1;
-            if(dealerhit==1)
-                {
-                    
-                    let d_card = [];
-                    d_card[0] = random_item(cards);
-                    d_card[1] = random_item(cards);
-
-                    d_first = d_card[0]
-                    dealerTotal = d_card[0] + d_card[1];
-                }
-        }
+//    if(hitcount==4)
+//        {
+//            hitcount=0;
+//            dealerhit=dealerhit+1;
+//            if(dealerhit==1)
+//                {
+//                    
+//                    let d_card = [];
+//                    d_card[0] = random_item(cards);
+//                    d_card[1] = random_item(cards);
+//
+//                    d_first = d_card[0]
+//                    dealerTotal = d_card[0] + d_card[1];
+//                }
+//        }
         var index=99;
         for(var i=0;i<4;i++)
                 {
