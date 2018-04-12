@@ -87,7 +87,7 @@ app.get('/getplayers/:ninerId', (req, res) => {
           "Player 1 " : players[0].id,
          "Player 2 " : players[1].id,
          "Player 3 " : players[2].id,
-        "Player 3 " : players[3].id,
+        "Player 4 " : players[3].id,
 
 
           
