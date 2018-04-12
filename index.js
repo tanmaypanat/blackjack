@@ -21,7 +21,7 @@ function Users(niner,sum,useable)
         this.useable=useable;
     }
 let count =0;
-let userObj = {}
+let userObj = {};
 let d_first = 0;
 var dealerhit=0;
 let dealerTotal = 0;
@@ -32,10 +32,10 @@ var players=[];
 var info="";
 let hitcount=0;
 
-app.get('/checkhit/:ninerId', (req, res) => {
-    res.send(""+hitcount);
-    
-})
+//app.get('/checkhit/:ninerId', (req, res) => {
+//    res.send(""+hitcount);
+//    
+//})
 //app.get('/getobsv/:ninerId', (req, res) => {
 //    
 //    var index=99;
@@ -74,31 +74,11 @@ app.get('/getplayers/:ninerId', (req, res) => {
           
           
         });
-    //res.send(""+players[2].id+""+players[1].id);
-   // res.send("Player 1 : "+players[1].id+"Player 2 : "+players[2].id+"Player 3 : "+players[3].id+"Player 4 : "+players[4].id);
-})
+    })
 app.get('/startGame/:ninerId', (req, res) => {
     usable=false;
     count=count+1;
-    if(count==1)
-        {
-          //  var tmp = [new Users(0,0,false),new Users(0,0,false),new Users(0,0,false),new Users(0,0,false))];
-        }
-//    if (req.params.ninerId) {
-//      if (!userObj[req.params.ninerId]) {
-//        dealerTotal = 0;
-//        userObj[req.params.ninerId] = 0;
-//        res.send("You can start the game !");
-//      }else {
-//        res.send("You can start the game !");
-//      }
-//    }else{
-//      res.send("Enter Your Niner ID !");
-//    }
-   // var def=new players();
-    //def.ninerid=10;
-    //def.sum=0;
-    //def.useable=false;
+    
     if(count==1)
         {
     var tt=new Users(req.params.ninerId,0,false);
