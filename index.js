@@ -264,15 +264,17 @@ app.get('/stand/:ninerId', (req, res) => {
     //if everyone has stood then do dealer hands
     for(var i=0;i<4;i++)
         {
-            if(ids[i]-req.params.ninerId==0)
-                {
-                    ids[i]=0;
-                }
+            if(players[i].id==req.params.ninerId)
+                players[i].standd=0;
         }
-    
+    sumi=0;
     for(var i=0;i<4;i++)
         {
-            sumi=sumi+ids[i];
+            if(players[i].standd!=0)
+                {
+                    sumi=100;
+                }
+               
         }
     if(sumi==0)
         {
