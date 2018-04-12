@@ -129,7 +129,12 @@ app.get('/hit/:ninerId', (req, res) => {
             dealerTotal=dealerTotal+1;
             if(dealerTotal==1)
                 {
-                    
+                    let d_card = [];
+                    d_card[0] = random_item(cards);
+                    d_card[1] = random_item(cards);
+
+                    d_first = d_card[0];
+                    dealerTotal = d_card[0] + d_card[1];
                 }
         }
         var index=99;
