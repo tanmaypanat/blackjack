@@ -21,6 +21,7 @@ function Users(niner,sum,useable)
         this.useable=useable;
     }
 let count =0;
+   let ids=[];
 let userObj = {}
 let dealerTotal = 0;
 let d_first;
@@ -29,6 +30,7 @@ let usable=false;
 var players=[];
 var info="";
 let hitcount=0;
+var idsum=0;
 app.get('/getobsv/:ninerId', (req, res) => {
     hitcount=0;
     let ptot=[];
@@ -70,6 +72,11 @@ app.get('/checkhits/:ninerId', (req, res) => {
 
 app.get('/getplayers/:ninerId', (req, res) => {
     
+ 
+    for(var i=0;i<4;i++)
+        {
+            ids[i]=players[i].id;
+        }
      res.json({
           "Player 1 " : players[0].id,
          "Player 2 " : players[1].id,
@@ -246,55 +253,34 @@ app.get('/hit/:ninerId', (req, res) => {
 })
 
 app.get('/stand/:ninerId', (req, res) => {
-    usable=false;
-  console.log(userObj[req.params.ninerId]);
-    if (userObj[req.params.ninerId] != undefined) {
-      let temp = userObj[req.params.ninerId];
-      userObj[req.params.ninerId] = 0;
-
+    
+    hitcount=hitcount+1;
+    //if everyone has stood then do dealer hands
+    for(var i=0;i<4;i++)
+        {
+            if(ids[i]==req.params.ninerId)
+                {
+                    ids[i]=0;
+                }
+        }
+    var sumi=0;
+    for(var i=0;i<4;i++)
+        {
+            sumi=sumi+ids[i];
+        }
+    if(sumi==0)
+        {
       while(dealerTotal < 17){
-        console.log("while 1 "+dealerTotal);
-        let rand_card = random_item(cards);
-        console.log(rand_card);
-        dealerTotal += rand_card
-        console.log("while 2 "+dealerTotal);
-      }
-
-      if (dealerTotal > 21) {
-        res.json({
-          "total" : temp,
-          "result"  : "Dealer Busted, you Won !",
-            "dealerTotal" :dealerTotal,
-          "Win" : true
-        })
-      }else{
-          if (dealerTotal > temp) {
-            res.json({
-              "total" : temp,
-              "result"  : "Dealer Won, you Lost !",
-                "dealerTotal" :dealerTotal,
-              "Win" : false
-            })
-          }else if (dealerTotal < temp) {
-            res.json({
-              "total" : temp,
-              "result"  : "Dealer Lost, you Won !",
-                "dealerTotal" :dealerTotal,
-              "Win" : true
-            })
-          }else{
-            res.json({
-              "total" : temp,
-              "result"  : "Dealer you Won draw !",
-                "dealerTotal" :dealerTotal,
-              "Win" : false
-            })
-          }
-      }
-    }else{
-      res.send("Please start the game and then Hit !");
+       
+          let rand_card = random_item(cards);
+         dealerTotal += rand_card;
+        
+      }}
+    else{
+        res.send(""+sumi);
     }
-})
+
+      })
 
 function random_item(items)
 {
