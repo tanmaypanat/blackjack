@@ -21,9 +21,7 @@ function Users(niner,sum,useable)
         this.useable=useable;
     }
 let count =0;
-let userObj = {};
-let d_first = 0;
-var dealerhit=0;
+let userObj = {}
 let dealerTotal = 0;
 let d_first;
 let cards = [1,2,3,4,5,6,7,8,9,10, 10, 10, 10];
@@ -31,30 +29,15 @@ let usable=false;
 var players=[];
 var info="";
 let hitcount=0;
-
-//app.get('/checkhit/:ninerId', (req, res) => {
-//    res.send(""+hitcount);
-//    
-//})
-//app.get('/getobsv/:ninerId', (req, res) => {
-//    
-//    var index=99;
-//        for(var i=0;i<4;i++)
-//                {
-//                    if(players[i].id==req.params.ninerId)
-//                        {
-//                        index=i;
-//                        }
-//                }
-//    
-//    res.json({
-//          "playertotal" : players[index].total,
-//          "dealerHand" : d_first,
-//          "usable" : players[index].useable,
-//        
-//        });
-//    
-//})
+app.get('/getobsv/:ninerId', (req, res) => {
+    res.json({
+          "total" : userObj[req.params.ninerId],
+          "dealerHand" : d_first,
+          "usable" : usable
+        
+        });
+    
+})
 app.get('/check/:ninerId', (req, res) => {
     res.send(""+count);
     
@@ -74,11 +57,31 @@ app.get('/getplayers/:ninerId', (req, res) => {
           
           
         });
-    })
+    //res.send(""+players[2].id+""+players[1].id);
+   // res.send("Player 1 : "+players[1].id+"Player 2 : "+players[2].id+"Player 3 : "+players[3].id+"Player 4 : "+players[4].id);
+})
 app.get('/startGame/:ninerId', (req, res) => {
     usable=false;
     count=count+1;
-    
+    if(count==1)
+        {
+          //  var tmp = [new Users(0,0,false),new Users(0,0,false),new Users(0,0,false),new Users(0,0,false))];
+        }
+//    if (req.params.ninerId) {
+//      if (!userObj[req.params.ninerId]) {
+//        dealerTotal = 0;
+//        userObj[req.params.ninerId] = 0;
+//        res.send("You can start the game !");
+//      }else {
+//        res.send("You can start the game !");
+//      }
+//    }else{
+//      res.send("Enter Your Niner ID !");
+//    }
+   // var def=new players();
+    //def.ninerid=10;
+    //def.sum=0;
+    //def.useable=false;
     if(count==1)
         {
     var tt=new Users(req.params.ninerId,0,false);
@@ -120,21 +123,6 @@ app.get('/hit/:ninerId', (req, res) => {
     
     
         hitcount=hitcount+1;
-//    if(hitcount==4)
-//        {
-//            hitcount=0;
-//            dealerhit=dealerhit+1;
-//            if(dealerhit==1)
-//                {
-//                    
-//                    let d_card = [];
-//                    d_card[0] = random_item(cards);
-//                    d_card[1] = random_item(cards);
-//
-//                    d_first = d_card[0]
-//                    dealerTotal = d_card[0] + d_card[1];
-//                }
-//        }
         var index=99;
         for(var i=0;i<4;i++)
                 {
