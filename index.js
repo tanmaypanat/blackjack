@@ -269,7 +269,7 @@ app.get('/hit/:ninerId', (req, res) => {
 
 app.get('/stand/:ninerId', (req, res) => {
     
-    hitcount=hitcount+1;
+    //hitcount=hitcount+1;
     //if everyone has stood then do dealer hands
     for(var i=0;i<4;i++)
         {
