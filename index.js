@@ -24,6 +24,7 @@ function Users(niner,sum,useable)
 let count =0;
    let ids=[];
 let userObj = {}
+var needshits=4;
 var sumi=0;
 let dealerTotal = 0;
 let d_first;
@@ -67,7 +68,15 @@ app.get('/check/:ninerId', (req, res) => {
 })
 
 app.get('/checkhits/:ninerId', (req, res) => {
-    res.send(""+hitcount);
+    if(hitcount==needshits)
+        {
+    res.send(""+4);
+        }
+    else
+        {
+                res.send(""+99);
+
+        }
     
 })
 
@@ -265,7 +274,10 @@ app.get('/stand/:ninerId', (req, res) => {
     for(var i=0;i<4;i++)
         {
             if(players[i].id==req.params.ninerId)
+                {
                 players[i].standd=0;
+                    needshits=needshits-1;
+                }
         }
     sumi=0;
     for(var i=0;i<4;i++)
