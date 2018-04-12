@@ -36,25 +36,25 @@ app.get('/checkhit/:ninerId', (req, res) => {
     res.send(""+hitcount);
     
 })
-app.get('/getobsv/:ninerId', (req, res) => {
-    
-    var index=99;
-        for(var i=0;i<4;i++)
-                {
-                    if(players[i].id==req.params.ninerId)
-                        {
-                        index=i;
-                        }
-                }
-    
-    res.json({
-          "playertotal" : players[index].total,
-          "dealerHand" : d_first,
-          "usable" : players[index].useable,
-        
-        });
-    
-})
+//app.get('/getobsv/:ninerId', (req, res) => {
+//    
+//    var index=99;
+//        for(var i=0;i<4;i++)
+//                {
+//                    if(players[i].id==req.params.ninerId)
+//                        {
+//                        index=i;
+//                        }
+//                }
+//    
+//    res.json({
+//          "playertotal" : players[index].total,
+//          "dealerHand" : d_first,
+//          "usable" : players[index].useable,
+//        
+//        });
+//    
+//})
 app.get('/check/:ninerId', (req, res) => {
     res.send(""+count);
     
