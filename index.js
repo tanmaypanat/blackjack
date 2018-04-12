@@ -19,7 +19,7 @@ function Users(niner,sum,useable)
         this.id=niner;
         this.total=sum;
         this.useable=useable;
-        this.standd=1;
+        this.standd=2;
     }
 let count =0;
    let ids=[];
@@ -28,6 +28,7 @@ var currentturn=0;
 let userObj = {}
 var needshits=4;
 var sumi=0;
+var obsv=0;
 let dealerTotal = 0;
 let d_first;
 let cards = [1,2,3,4,5,6,7,8,9,10, 10, 10, 10];
@@ -37,7 +38,7 @@ var info="";
 let hitcount=0;
 var idsum=0;
 app.get('/getobsv/:ninerId', (req, res) => {
-    hitcount=0;
+    obvs=0;
     let ptot=[];
     let pus=[];
     var k=-1;
@@ -71,7 +72,7 @@ app.get('/check/:ninerId', (req, res) => {
 
 app.get('/checkhits/:ninerId', (req, res) => {
     
-res.send(""+hitcount);
+res.send(""+obsv);
    
 })
 
@@ -146,8 +147,8 @@ app.get('/hit/:ninerId', (req, res) => {
     if(turn[currentturn]==req.params.ninerId)
         {
             
-        hitcount=hitcount+1;
-    if(hitcount==4)
+        obsv=obsv+1;
+    if(obsv==4)
         {
             
             dealerTotal=dealerTotal+1;
@@ -180,7 +181,7 @@ app.get('/hit/:ninerId', (req, res) => {
         t_card[1] = random_item(cards);
         if(t_card[0]==1)
                     {
-                if(t_card[0]+t_card[1]<21)
+                if(11+t_card[1]<21)
                             {
                     players[index].useable=true;
                     players[index].total = 11+ t_card[1];
@@ -195,7 +196,7 @@ app.get('/hit/:ninerId', (req, res) => {
                     }
           else if(t_card[1]==1)
                 {
-                if(t_card[0]+t_card[1]<21)
+                if(t_card[0]+11<21)
                         {
                     players[index].useable=true;
                     players[index].total = 11+ t_card[0];
@@ -221,7 +222,7 @@ app.get('/hit/:ninerId', (req, res) => {
         let s_card = random_item(cards);
           if(s_card==1)
                 {
-                if(  players[index].total+s_card<21)
+                if(  players[index].total+11<21)
                         {
                      players[index].useable=true;
                      players[index].total+= 11;
@@ -262,7 +263,7 @@ app.get('/stand/:ninerId', (req, res) => {
     if(turn[currentturn]==req.params.ninerId)
         {
             
-        hitcount=hitcount+1;
+        obsv=obsv+1;
     for(var i=0;i<4;i++)
         {
             if(players[i].id==req.params.ninerId)
@@ -274,25 +275,24 @@ app.get('/stand/:ninerId', (req, res) => {
     sumi=0;
     for(var i=0;i<4;i++)
         {
-            if(players[i].standd!=0)
-                {
-                    sumi=100;
-                }
+            sumi=sumi+players[i].standd;
                
         }
-    if(sumi==0)
+            if(sumi==0)
+                {
+                    sumi=1;
+                }
+    if(sumi==1)
         {
       while(dealerTotal < 17){
        
           let rand_card = random_item(cards);
          dealerTotal += rand_card;
-          res.send(""+dealerTotal);
+          
         
       }}
-    else{
-        res.send(""+sumi);
-    }
         }
+    
       })
 
 function random_item(items)
