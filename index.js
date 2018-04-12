@@ -23,6 +23,7 @@ function Users(niner,sum,useable)
 let count =0;
    let ids=[];
 let userObj = {}
+var sumi=0;
 let dealerTotal = 0;
 let d_first;
 let cards = [1,2,3,4,5,6,7,8,9,10, 10, 10, 10];
@@ -69,6 +70,10 @@ app.get('/checkhits/:ninerId', (req, res) => {
     
 })
 
+app.get('/checkstand/:ninerId', (req, res) => {
+    res.send(""+sumi);
+    
+})
 
 app.get('/getplayers/:ninerId', (req, res) => {
     
@@ -263,7 +268,7 @@ app.get('/stand/:ninerId', (req, res) => {
                     ids[i]=0;
                 }
         }
-    var sumi=0;
+    
     for(var i=0;i<4;i++)
         {
             sumi=sumi+ids[i];
