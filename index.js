@@ -117,7 +117,8 @@ app.get('/hit/:ninerId', (req, res) => {
         for(int i=0;i<4;i++)
             {
                 if(players[i].id==req.params.ninerId)
-                    index=i;
+                    {
+                    index=i;}
             }
         let t_card = [];
         
@@ -219,9 +220,7 @@ app.get('/hit/:ninerId', (req, res) => {
 //          });
 //        }
       }
-    }else{
-      res.send("Please start the game and then Hit !");
-    }
+    
     res.send(""+players[index].total)
 })
 
