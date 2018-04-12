@@ -115,7 +115,14 @@ app.get('/startGame/:ninerId', (req, res) => {
 
 app.get('/firsthit/:ninerId', (req, res) => {
     hitcount=hitcount+1;
-    res.send(""+hitcount);
+    var index=99;
+        for(var i=0;i<4;i++)
+                {
+                    if(players[i].id==req.params.ninerId)
+                        {
+                        index=i;
+                        }
+                }
     
 })
 
