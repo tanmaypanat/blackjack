@@ -103,7 +103,27 @@ app.get('/checkstand/:ninerId', (req, res) => {
 })
 
 
-
+app.get('/reset/:ninerId', (req, res) => {
+     count =0;
+    ids=[];
+ turn=[];
+ actualhits=4;
+ currentturn=0;
+ userObj = {};
+ needshits=4;
+ sumi=0;
+ obsv=0;
+ dealerT = 0;
+ 
+ cards = [1,2,3,4,5,6,7,8,9,10, 10, 10, 10];
+ 
+ players=[];
+ 
+ observer=0;
+ hitcount=0;
+ idsum=0;
+    
+})
 app.get('/checkobsv/:ninerId', (req, res) => {
     if(observer==4)
         {
@@ -116,6 +136,7 @@ app.get('/checkobsv/:ninerId', (req, res) => {
         }
     
 })
+
 
 app.get('/getresult/:ninerId', (req, res) => {
     
