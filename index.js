@@ -117,6 +117,25 @@ app.get('/checkobsv/:ninerId', (req, res) => {
     
 })
 
+app.get('/getresult/:ninerId', (req, res) => {
+    
+ 
+    
+     res.json({
+          "Player1 id " : players[0].id,
+         "Player1 total " : players[0].total,
+         "Player2 id " : players[1].id,
+         "Player2 total " : players[1].total,
+         "Player3 id " : players[2].id,
+         "Player3 total " : players[2].total,
+         "Player4 id " : players[3].id,
+         "Player4 total " : players[3].total,
+         "Dealer":dealerTotal
+        
+        });
+
+})
+
 app.get('/getplayers/:ninerId', (req, res) => {
     
  
@@ -287,6 +306,7 @@ app.get('/stand/:ninerId', (req, res) => {
     
     //hitcount=hitcount+1;
     //if everyone has stood then do dealer hands
+    
     actualhits=actualhits-1;
     
         
