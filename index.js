@@ -41,8 +41,11 @@ let hitcount=0;
 var idsum=0;
 app.get('/getobsv/:ninerId', (req, res) => {
     observer=observer+1;
-    if(observer==4)
+    if(observer==actualhits)
+        {
         obsv=0;
+        observer=0;
+        }
     let ptot=[];
     let pus=[];
     var k=-1;
