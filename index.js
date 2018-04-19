@@ -312,7 +312,7 @@ app.get('/stand/:ninerId', (req, res) => {
           
         
       }}
-        
+        res.send("You have decided to stand, Now please wait for other players to finish");
     
       })
 
