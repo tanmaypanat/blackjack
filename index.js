@@ -30,7 +30,7 @@ let userObj = {}
 var needshits=4;
 var sumi=0;
 var obsv=0;
-let dealerTotal = 0;
+let dealerT = 0;
 let d_first;
 let cards = [1,2,3,4,5,6,7,8,9,10, 10, 10, 10];
 let usable=false;
@@ -102,10 +102,7 @@ app.get('/checkstand/:ninerId', (req, res) => {
     
 })
 
-app.get('/checkres/:ninerId', (req, res) => {
-    res.send(""+sumi);
-    
-})
+
 
 app.get('/checkobsv/:ninerId', (req, res) => {
     if(observer==4)
@@ -189,8 +186,8 @@ app.get('/hit/:ninerId', (req, res) => {
     if(obsv==4)
         {
             
-            dealerTotal=dealerTotal+1;
-            if(dealerTotal==1)
+            dealerT=dealerT+1;
+            if(dealerT==1)
                 {
                     let d_card = [];
                     d_card[0] = random_item(cards);
