@@ -83,7 +83,7 @@ app.get('/check/:ninerId', (req, res) => {
 })
 
 app.get('/checkhits/:ninerId', (req, res) => {
-    if(actualhits==obsv)
+    if(obsv==actualhits)
         {
 res.send(""+4);
         }
@@ -283,7 +283,7 @@ app.get('/stand/:ninerId', (req, res) => {
     //hitcount=hitcount+1;
     //if everyone has stood then do dealer hands
     actualhits=actualhits-1;
-            
+    
         
     for(var i=0;i<4;i++)
         {
