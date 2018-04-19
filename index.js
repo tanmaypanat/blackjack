@@ -122,6 +122,7 @@ app.get('/reset/:ninerId', (req, res) => {
  observer=0;
  hitcount=0;
  idsum=0;
+    res.send("done")
     
 })
 app.get('/checkobsv/:ninerId', (req, res) => {
