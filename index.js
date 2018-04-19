@@ -102,6 +102,23 @@ app.get('/checkstand/:ninerId', (req, res) => {
     
 })
 
+app.get('/getresults/:ninerId', (req, res) => {
+    
+    res.json({
+          "Player Id" : players[0].id,
+          "Player Total" : players[0].total,
+        "Player Id" :players[1].id,
+          "Player Total" : players[1].total,
+         "Player Id" : players[2].id,
+          "Player Total" : players[2].total,
+         "Player Id" : players[3].id,
+          "Player Total" : players[3].total,
+         "dealerTotal" : dealerTotal,
+          
+          
+        
+        });
+})
 app.get('/checkobsv/:ninerId', (req, res) => {
     if(observer==4)
         {
@@ -312,7 +329,8 @@ app.get('/stand/:ninerId', (req, res) => {
        
           let rand_card = random_item(cards);
          dealerTotal += rand_card;
-          
+           
+        
         
       }}
         res.send("You have decided to stand, Now please wait for other players to finish");
