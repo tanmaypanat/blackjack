@@ -24,6 +24,7 @@ function Users(niner,sum,useable)
 let count =0;
    let ids=[];
 let turn=[];
+let actualhits=4;
 var currentturn=0;
 let userObj = {}
 var needshits=4;
@@ -82,8 +83,14 @@ app.get('/check/:ninerId', (req, res) => {
 })
 
 app.get('/checkhits/:ninerId', (req, res) => {
-    
-res.send(""+obsv);
+    if(actualhits==obsv)
+        {
+res.send(""+4);
+        }
+    else
+        {
+            res.send(""+5);
+        }
    
 })
 
@@ -275,10 +282,9 @@ app.get('/stand/:ninerId', (req, res) => {
     
     //hitcount=hitcount+1;
     //if everyone has stood then do dealer hands
-    if(turn[currentturn]==req.params.ninerId)
-        {
+    actualhits=actualhits-1;
             
-        obsv=obsv+1;
+        
     for(var i=0;i<4;i++)
         {
             if(players[i].id==req.params.ninerId)
@@ -306,7 +312,7 @@ app.get('/stand/:ninerId', (req, res) => {
           
         
       }}
-        }
+        
     
       })
 
