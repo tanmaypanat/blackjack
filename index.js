@@ -105,14 +105,14 @@ app.get('/checkstand/:ninerId', (req, res) => {
 app.get('/getresults/:ninerId', (req, res) => {
     
     res.json({
-          "Player Id" : players[0].id,
-          "Player Total" : players[0].total,
-        "Player Id" :players[1].id,
-          "Player Total" : players[1].total,
-         "Player Id" : players[2].id,
-          "Player Total" : players[2].total,
-         "Player Id" : players[3].id,
-          "Player Total" : players[3].total,
+          "Player1 Id" : players[0].id,
+          "Player1 Total" : players[0].total,
+        "Player2 Id" :players[1].id,
+          "Player2 Total" : players[1].total,
+         "Player3 Id" : players[2].id,
+          "Player3 Total" : players[2].total,
+         "Player4 Id" : players[3].id,
+          "Player4 Total" : players[3].total,
          "dealerTotal" : dealerTotal,
           
           
